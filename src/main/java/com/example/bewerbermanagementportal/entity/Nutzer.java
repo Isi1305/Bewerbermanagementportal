@@ -1,7 +1,6 @@
 package com.example.bewerbermanagementportal.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.persister.entity.UniqueKeyEntry;
 
 @Entity
 public class Nutzer {
