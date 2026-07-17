@@ -12,14 +12,6 @@ public class Nutzer {
     public Nutzer() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
     @Column(nullable = false, length = 50)
     private String name;
 
@@ -32,4 +24,49 @@ public class Nutzer {
     @Enumerated(EnumType.STRING) // Speichert den Wert als Text
     @Column(nullable = false)
     private Rolle rolle; // Typ Rolle: selbstgebautes Enum
+
+    // Getter-Setter für id
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    // Getter-Setter für name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    // Getter-Setter für email
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    // Getter-Setter für email
+    public void setPasswort(String passwort) {
+        this.passwort = passwort;
+    }
+
+    public String getPasswort() {
+        return passwort;
+    }
+
+    // Getter-Setter für rolle
+    public void setRolle(Rolle rolle) {
+        this.rolle = rolle;
+    }
+
+    public Rolle getRolle() {
+        return rolle;
+    }
 }
