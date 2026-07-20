@@ -23,7 +23,7 @@ public class Stelle {
     @Column(nullable = false, length = 100)
     private String standort;
 
-    // Getter-Setter für titel
+    // Getter-Setter für id
     public void setId(Long id) {
         this.id = id;
     }
@@ -66,5 +66,18 @@ public class Stelle {
 
     public String getStandort() {
         return standort;
+    }
+
+    // Nutzer mit Rolle RECRUITER (technisch Typ Nutzer, Rollenprüfung erfolgt im Service)
+    @ManyToOne
+    @JoinColumn(name = "nutzer_id", nullable = false)
+    private Nutzer recruiter;
+
+    public void setRecruiter(Nutzer recruiter) {
+        this.recruiter = recruiter;
+    }
+
+    public Nutzer getRecruiter() {
+        return recruiter;
     }
 }
