@@ -17,6 +17,7 @@ public class NutzerService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // Passwort-Hashing und prüft ob E-Mail schon existiert
     public Nutzer registrieren(Nutzer nutzer) { // nimmt Wert entgegen und gibt ihn am Ende gespeichert zurück.
         if (nutzerRepository.existsByEmail(nutzer.getEmail())) {
             throw new IllegalArgumentException("E-Mail bereits registriert"); // bricht die Methode sofort ab und meldet einen Fehler, falls die E-Mail schon existiert.
@@ -25,6 +26,7 @@ public class NutzerService {
         return nutzerRepository.save(nutzer);
     }
 
+    // prüft ob der Nutzer existiert und ob das Passwort richtig ist
     public Nutzer login(Nutzer nutzer) {
         Optional<Nutzer> gefundenerNutzer = nutzerRepository.findByEmail(nutzer.getEmail());
 
