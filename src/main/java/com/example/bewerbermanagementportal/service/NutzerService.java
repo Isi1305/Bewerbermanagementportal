@@ -5,10 +5,13 @@ import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class NutzerService {
     private final NutzerRepository nutzerRepository; // speichert das Repository und ändert sich nicht mehr.
     private final PasswordEncoder passwordEncoder;
+
     public NutzerService(NutzerRepository nutzerRepository, PasswordEncoder passwordEncoder) {
         this.nutzerRepository = nutzerRepository;
         this.passwordEncoder = passwordEncoder;
@@ -20,5 +23,17 @@ public class NutzerService {
         }
         nutzer.setPasswort(passwordEncoder.encode(nutzer.getPasswort())); // von innen nach außen
         return nutzerRepository.save(nutzer);
+    }
+
+    public Nutzer login(Nutzer nutzer) {
+        Optional<Nutzer> gefundenerNutzer = nutzerRepository.findByEmail(nutzer.getEmail());
+
+        if (gefundenerNutzer.isEmpty()) {
+            throw new IllegalArgumentException("Nutzer nicht gefunden");
+        }
+        if (!passwordEncoder.matches(nutzer.getPasswort(), gefundenerNutzer.get().getPasswort())) {
+            throw new IllegalArgumentException("Passwort falsch");
+        }
+        return gefundenerNutzer.get();
     }
 }
