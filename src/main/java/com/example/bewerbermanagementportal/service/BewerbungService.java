@@ -2,9 +2,11 @@ package com.example.bewerbermanagementportal.service;
 
 import com.example.bewerbermanagementportal.entity.Bewerbung;
 import com.example.bewerbermanagementportal.entity.BewerbungStatus;
+import com.example.bewerbermanagementportal.entity.Stelle;
 import com.example.bewerbermanagementportal.repository.BewerbungRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,4 +35,6 @@ public class BewerbungService {
 
         return bewerbungRepository.save(gefundeneBewerbung.get());
     }
+
+
 }
