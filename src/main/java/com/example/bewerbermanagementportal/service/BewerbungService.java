@@ -36,5 +36,8 @@ public class BewerbungService {
         return bewerbungRepository.save(gefundeneBewerbung.get());
     }
 
-
+    // alle Bewerbungen zu einer Stelle anzeigen
+    public List<Bewerbung> bewerbungenProStelle(Stelle stelle) {
+        return bewerbungRepository.findByStelle(stelle);
+    }
 }
