@@ -1,7 +1,11 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
     </head>
 
     <body>
+    <h1>Alle Stellen</h1>
+    <ul>
+        <li th:each="stelle : ${stellen}" th:text="${stelle.titel}"></li>
+    </ul>
     </body>
 </html>
