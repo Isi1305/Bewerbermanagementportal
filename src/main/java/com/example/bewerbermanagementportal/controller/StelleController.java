@@ -1,6 +1,7 @@
 package com.example.bewerbermanagementportal.controller;
 
 import com.example.bewerbermanagementportal.entity.Stelle;
+import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import com.example.bewerbermanagementportal.service.StelleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class StelleController {
     private final StelleService stelleService;
+    private final NutzerRepository nutzerRepository;
 
-    public StelleController(StelleService stelleService) {
+    public StelleController(StelleService stelleService, NutzerRepository nutzerRepository) {
         this.stelleService = stelleService;
+        this.nutzerRepository = nutzerRepository;
     }
 
     // Liste holen und ans Model übergeben
@@ -39,6 +42,7 @@ public class StelleController {
 
     @PostMapping("/stellen/neu")
     public String neueStelle(@ModelAttribute Stelle stelle) {
+        stelle.setRecruiter(nutzerRepository.findAll().get(0));
         stelleService.stelleAnlegen(stelle);
         return "redirect:/stellen";
     }

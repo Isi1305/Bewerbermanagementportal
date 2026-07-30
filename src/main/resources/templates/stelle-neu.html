@@ -1,0 +1,14 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    </head>
+
+    <body>
+        <form th:action="@{/stellen/neu}" method="post">
+            <input type="text" name="titel" placeholder="Titel">
+            <input type="text" name="beschreibung" placeholder="Beschreibung">
+            <input type="text" name="typ" placeholder="Typ">
+            <input type="text" name="standort" placeholder="Standort">
+            <button type="submit">Anlegen</button>
+        </form>
+    </body>
+</html>
