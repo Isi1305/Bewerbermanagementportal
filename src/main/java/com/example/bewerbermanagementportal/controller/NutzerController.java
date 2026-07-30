@@ -2,6 +2,7 @@ package com.example.bewerbermanagementportal.controller;
 
 import com.example.bewerbermanagementportal.entity.Nutzer;
 import com.example.bewerbermanagementportal.service.NutzerService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,9 +35,11 @@ public class NutzerController {
         return "login";
     }
 
+    // Beim Login die ID in der Session speichern
     @PostMapping("/login")
-    public String login(@ModelAttribute Nutzer nutzer) {
-        nutzerService.login(nutzer);
+    public String login(@ModelAttribute Nutzer nutzer, HttpSession session) {
+        Nutzer eingeloggterNutzer = nutzerService.login(nutzer);
+        session.setAttribute("nutzerId", eingeloggterNutzer.getId());
         return "redirect:/startseite";
     }
 }

@@ -3,6 +3,7 @@ package com.example.bewerbermanagementportal.controller;
 import com.example.bewerbermanagementportal.entity.Stelle;
 import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import com.example.bewerbermanagementportal.service.StelleService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,9 +41,11 @@ public class StelleController {
         return "stelle-neu";
     }
 
+    // gespeicherte ID in NutzerController wird hier ausgelesen
     @PostMapping("/stellen/neu")
-    public String neueStelle(@ModelAttribute Stelle stelle) {
-        stelle.setRecruiter(nutzerRepository.findAll().get(0)); // Damit man Stellen anlegen kann
+    public String neueStelle(@ModelAttribute Stelle stelle, HttpSession session) {
+        Long nutzerId = (Long) session.getAttribute("nutzerId");
+        stelle.setRecruiter(nutzerRepository.findById(nutzerId).get());
         stelleService.stelleAnlegen(stelle);
         return "redirect:/stellen";
     }
