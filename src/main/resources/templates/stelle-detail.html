@@ -7,5 +7,9 @@
         <p th:text="${stelle.beschreibung}"></p>
         <p th:text="${stelle.typ}"></p>
         <p th:text="${stelle.standort}"></p>
+        <form th:action="@{/bewerbung}" method="post">
+            <input type="hidden" name="stelleId" th:value="${stelle.id}">
+            <button type="submit">Jetzt Bewerben</button>
+        </form>
     </body>
 </html>
