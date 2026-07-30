@@ -4,7 +4,6 @@
 
     <body>
         <form th:action="@{/registrieren}" method="post">
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <input type="text" name="name" placeholder="Name">
             <input type="email" name="email" placeholder="E-Mail">
             <input type="password" name="passwort" placeholder="Passwort">

@@ -14,10 +14,10 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // Teile des Portals öffentlich stellen
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/stellen", "/stellen/**", "/registrieren", "/login").permitAll()
                         .anyRequest().authenticated()
