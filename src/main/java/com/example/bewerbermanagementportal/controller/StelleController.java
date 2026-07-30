@@ -42,7 +42,7 @@ public class StelleController {
 
     @PostMapping("/stellen/neu")
     public String neueStelle(@ModelAttribute Stelle stelle) {
-        stelle.setRecruiter(nutzerRepository.findAll().get(0));
+        stelle.setRecruiter(nutzerRepository.findAll().get(0)); // Damit man Stellen anlegen kann
         stelleService.stelleAnlegen(stelle);
         return "redirect:/stellen";
     }
