@@ -5,7 +5,11 @@
     <body>
     <h1>Alle Stellen</h1>
     <ul>
-        <li th:each="stelle : ${stellen}" th:text="${stelle.titel}"></li>
+        <li th:each="stelle : ${stellen}">
+            <a th:href="@{/stellen/{id}(id=${stelle.id})}"
+               th:text="${stelle.titel}">
+            </a>
+        </li>
     </ul>
     </body>
 </html>
