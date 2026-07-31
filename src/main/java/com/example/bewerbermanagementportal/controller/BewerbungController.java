@@ -9,10 +9,7 @@ import com.example.bewerbermanagementportal.repository.StelleRepository;
 import com.example.bewerbermanagementportal.service.BewerbungService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class BewerbungController {
@@ -60,5 +57,10 @@ public class BewerbungController {
     public String statusAendern(@PathVariable Long id, @RequestParam BewerbungStatus neuerStatus) {
         bewerbungService.statusAendern(id, neuerStatus);
         return "redirect:/stellen";
+    }
+
+    @GetMapping("/bewerbung")
+    public String bewerbungFormular() {
+        return "bewerbung-formular";
     }
 }
