@@ -23,6 +23,13 @@ public class Stelle {
     @Column(nullable = false, length = 100)
     private String standort;
 
+    @Column(nullable = false, length = 50)
+    private String arbeitsbereich;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Karrierestatus karrierestatus;
+
     // Getter-Setter für id
     public void setId(Long id) {
         this.id = id;
@@ -66,6 +73,23 @@ public class Stelle {
 
     public String getStandort() {
         return standort;
+    }
+
+    // Getter-Setter für Arbeitsbereich und Karrierestatus (DropDown-Menü)
+    public String getArbeitsbereich() {
+        return arbeitsbereich;
+    }
+
+    public void setArbeitsbereich(String arbeitsbereich) {
+        this.arbeitsbereich = arbeitsbereich;
+    }
+
+    public Karrierestatus getKarrierestatus() {
+        return karrierestatus;
+    }
+
+    public void setKarrierestatus(Karrierestatus karrierestatus) {
+        this.karrierestatus = karrierestatus;
     }
 
     // Nutzer mit Rolle RECRUITER (technisch Typ Nutzer, Rollenprüfung erfolgt im Service)
