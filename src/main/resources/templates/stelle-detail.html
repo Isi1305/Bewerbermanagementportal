@@ -8,7 +8,7 @@
         <p th:text="${stelle.typ}"></p>
         <p th:text="${stelle.standort}"></p>
         <form th:action="@{/bewerbung}" method="post">
-            <input type="hidden" name="stelleId" th:value="${stelle.id}">
+            <input type="hidden" name="stelleId" th:value="${stelle.id}"> <!-- setzt den Wert des Feldes auf die ID der aktuell angezeigten Stelle -->
             <button type="submit">Jetzt Bewerben</button>
         </form>
     </body>
