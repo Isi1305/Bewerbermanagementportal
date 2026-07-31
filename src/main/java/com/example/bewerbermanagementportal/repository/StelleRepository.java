@@ -7,8 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface StelleRepository extends JpaRepository<Stelle, Long> {
-    List<Stelle> findByArbeitsbereichAndKarrierstatus(
+
+    List<Stelle> findByArbeitsbereichAndKarrierestatus(
             String arbeitsbereich,
             Karrierestatus karrierestatus
     );
+
 }

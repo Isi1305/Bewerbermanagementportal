@@ -1,5 +1,6 @@
 package com.example.bewerbermanagementportal.service;
 
+import com.example.bewerbermanagementportal.entity.Karrierestatus;
 import com.example.bewerbermanagementportal.entity.Stelle;
 import com.example.bewerbermanagementportal.repository.StelleRepository;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,17 @@ public class StelleService {
         }
 
         return gefundeneStelle.get();
+    }
+
+    // Stelle suchen im DropDown
+    public List<Stelle> stellenSuchen(
+            String arbeitsbereich,
+            Karrierestatus karrierestatus
+    ) {
+
+        return stelleRepository.findByArbeitsbereichAndKarrierestatus(
+                arbeitsbereich,
+                karrierestatus
+        );
     }
 }
