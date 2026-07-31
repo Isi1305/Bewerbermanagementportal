@@ -16,6 +16,21 @@ public class Bewerbung {
     @Column(nullable = false)
     private BewerbungStatus status;
 
+    @Column(nullable = false, length = 50)
+    private String vorname;
+
+    @Column(nullable = false, length = 50)
+    private String nachname;
+
+    @Column(nullable = false, length = 100)
+    private String email;
+
+    @Column(nullable = false, length = 30)
+    private String telefon;
+
+    @Column(nullable = false)
+    private boolean datenschutzAkzeptiert;
+
     // Getter-Setter für id
     public void setId(Long id) {
         this.id = id;
@@ -32,6 +47,47 @@ public class Bewerbung {
 
     public BewerbungStatus getStatus() {
         return status;
+    }
+
+    // Getter-Setter für vorname
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    // Getter-Setter für nachname
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    // Getter-Setter für email
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    // Getter-Setter für telefon
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+
+    // Getter-Setter für DatenschutzAkzeptiert
+    public void setDatenschutzAkzeptiert(Boolean datenschutzAkzeptiert) {
+        this.datenschutzAkzeptiert = datenschutzAkzeptiert;
+    }
+
+    public boolean isDatenschutzAkzeptiert() {
+        return datenschutzAkzeptiert;
     }
 
     // Nutzer mit Rolle BEWERBER (technisch Typ Nutzer, Rollenprüfung erfolgt im Service)
