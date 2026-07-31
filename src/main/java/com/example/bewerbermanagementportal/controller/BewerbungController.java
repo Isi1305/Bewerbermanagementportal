@@ -9,6 +9,7 @@ import com.example.bewerbermanagementportal.repository.StelleRepository;
 import com.example.bewerbermanagementportal.service.BewerbungService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -60,7 +61,8 @@ public class BewerbungController {
     }
 
     @GetMapping("/bewerbung")
-    public String bewerbungFormular() {
+    public String bewerbungFormular(@RequestParam Long stelleId, Model model) {
+        model.addAttribute("stelleId", stelleId);
         return "bewerbung-formular";
     }
 }
