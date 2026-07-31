@@ -28,7 +28,13 @@ public class BewerbungController {
     @PostMapping("/bewerbung")
     public String bewerbungEinreichen(
             @RequestParam Long stelleId,
-            HttpSession session) {
+            @RequestParam String vorname,
+            @RequestParam String nachname,
+            @RequestParam String email,
+            @RequestParam String telefon,
+            @RequestParam boolean datenschutzAkzeptiert,
+            HttpSession session
+    ) {
 
 
         Long nutzerId = (Long) session.getAttribute("nutzerId");
