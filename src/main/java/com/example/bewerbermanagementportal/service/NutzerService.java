@@ -1,6 +1,7 @@
 package com.example.bewerbermanagementportal.service;
 
 import com.example.bewerbermanagementportal.entity.Nutzer;
+import com.example.bewerbermanagementportal.entity.Rolle;
 import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ public class NutzerService {
             throw new IllegalArgumentException("E-Mail bereits registriert"); // bricht die Methode sofort ab und meldet einen Fehler, falls die E-Mail schon existiert.
         }
         nutzer.setPasswort(passwordEncoder.encode(nutzer.getPasswort())); // von innen nach außen
+        nutzer.setRolle(Rolle.BEWERBER);
+
         return nutzerRepository.save(nutzer);
     }
 
