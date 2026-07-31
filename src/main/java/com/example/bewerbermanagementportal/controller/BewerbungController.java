@@ -36,6 +36,9 @@ public class BewerbungController {
             HttpSession session
     ) {
 
+        if(!datenschutzAkzeptiert) {
+            throw new IllegalArgumentException("Datenschutz muss akzeptiert werden");
+        }
 
         Long nutzerId = (Long) session.getAttribute("nutzerId");
 
@@ -54,6 +57,9 @@ public class BewerbungController {
         bewerbung.setStelle(stelle);
         bewerbung.setVorname(vorname);
         bewerbung.setNachname(nachname);
+        bewerbung.setEmail(email);
+        bewerbung.setTelefon(telefon);
+        bewerbung.setDatenschutzAkzeptiert(datenschutzAkzeptiert);
 
         bewerbungService.bewerbungEinreichen(bewerbung);
 
