@@ -81,8 +81,12 @@ public class Bewerbung {
         this.telefon = telefon;
     }
 
+    public String getTelefon() {
+        return telefon;
+    }
+
     // Getter-Setter für DatenschutzAkzeptiert
-    public void setDatenschutzAkzeptiert(Boolean datenschutzAkzeptiert) {
+    public void setDatenschutzAkzeptiert(boolean datenschutzAkzeptiert) {
         this.datenschutzAkzeptiert = datenschutzAkzeptiert;
     }
 
