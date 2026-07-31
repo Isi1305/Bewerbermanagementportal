@@ -28,16 +28,30 @@ public class BewerbungController {
 
     // Einreichen der Bewerbung und Weiterleitung zurück zur Stellendetailseite
     @PostMapping("/bewerbung")
-    public String bewerbungEinreichen(@RequestParam Long stelleId, HttpSession session) {
+    public String bewerbungEinreichen(
+            @RequestParam Long stelleId,
+            HttpSession session) {
+
+
         Long nutzerId = (Long) session.getAttribute("nutzerId");
+
+        if(nutzerId == null){
+            return "redirect:/login";
+        }
+
+
         Nutzer bewerber = nutzerRepository.findById(nutzerId).get();
         Stelle stelle = stelleRepository.findById(stelleId).get();
 
+
         Bewerbung bewerbung = new Bewerbung();
+
         bewerbung.setBewerber(bewerber);
         bewerbung.setStelle(stelle);
 
         bewerbungService.bewerbungEinreichen(bewerbung);
+
+
         return "redirect:/stellen/" + stelleId;
     }
 
