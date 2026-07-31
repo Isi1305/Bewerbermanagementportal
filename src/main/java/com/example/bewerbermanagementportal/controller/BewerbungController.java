@@ -52,6 +52,8 @@ public class BewerbungController {
 
         bewerbung.setBewerber(bewerber);
         bewerbung.setStelle(stelle);
+        bewerbung.setVorname(vorname);
+        bewerbung.setNachname(nachname);
 
         bewerbungService.bewerbungEinreichen(bewerbung);
 
