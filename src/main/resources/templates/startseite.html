@@ -6,10 +6,27 @@
         <h1>Catchphrase</h1>
         <p>Längerer Spruch.</p>
 
-        <!--Stellenliste-->
-        <ul>
-            <li th:each="stelle : ${stellen}" th:text="${stelle.titel}"></li>
-        </ul>
+        <!--offene Stellen-->
+        <h2>Unsere offene Stellen</h2>
+
+        <div th:each="stelle : ${stellen}">
+            <h3 th:text="{stelle.titel}"></h3>
+
+            <p>
+                Standort:
+                <span th:text="{stelle.standort}"></span>
+            </p>
+
+            <p>
+                Art:
+                <span th:text="${stelle.typ}"></span>
+            </p>
+
+            <a th:href="@{/stellen/{id}(id=${stelle.id})}">
+                Mehr erfahren
+            </a>
+
+        </div>
 
         <!--Warum man dazugehört Teil -->
         <h2>Warum du zu unserem Team gehörst</h2>
