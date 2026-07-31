@@ -5,7 +5,7 @@
     <body>
         <h1>Bewerbung</h1>
 
-        <form>
+        <form th:action="@{/bewerbung}" method="post"> <!-- Beim Klick auf Jetzt Bewerben werden die Daten an /bewerbung geschickt -->
             <input type="text" name="vorname" placeholder="Vorname">
             <input type="text" name="nachname" placeholder="Nachname">
             <input type="text" name="email" placeholder="E-Mail">
@@ -16,11 +16,11 @@
                 Ich akzeptiere die Datenschutzbedingungen
             </label>
 
-            <button type="submit">
-                Jetzt BewerbenS
-            </button>
-
             <input type="hidden" name="stelleId" th:value="${stelleId}">
+
+            <button type="submit">
+                Jetzt Bewerben
+            </button>
         </form>
     </body>
 </html>

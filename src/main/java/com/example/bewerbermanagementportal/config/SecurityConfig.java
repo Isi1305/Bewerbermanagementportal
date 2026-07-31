@@ -21,7 +21,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/stellen",
-                                "/stellen/{id}",
+                                "/stellen/**",
+                                "/bewerbung",
                                 "/registrieren",
                                 "/login",
                                 "/startseite"
