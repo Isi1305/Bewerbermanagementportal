@@ -1,5 +1,6 @@
 package com.example.bewerbermanagementportal;
 
+import com.example.bewerbermanagementportal.entity.Karrierestatus;
 import com.example.bewerbermanagementportal.entity.Nutzer;
 import com.example.bewerbermanagementportal.entity.Rolle;
 import com.example.bewerbermanagementportal.entity.Stelle;
@@ -38,6 +39,11 @@ public class DataInitializer implements CommandLineRunner {
         stelle.setTyp("Vollzeit");
         stelle.setBeschreibung("Entwicklung von Spring Boot Anwendung");
         stelle.setStandort("München");
+
+        stelle.setArbeitsbereich("IT");
+        stelle.setKarrierestatus(Karrierestatus.EINSTEIGER);
+
+        stelle.setRecruiter(recruiter);
 
         stelleRepository.save(stelle);
     }
