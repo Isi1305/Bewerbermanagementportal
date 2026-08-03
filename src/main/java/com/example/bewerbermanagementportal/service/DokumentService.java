@@ -4,7 +4,12 @@ import com.example.bewerbermanagementportal.entity.Bewerbung;
 import com.example.bewerbermanagementportal.entity.Dokument;
 import com.example.bewerbermanagementportal.repository.DokumentRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Service
@@ -17,6 +22,24 @@ public class DokumentService {
 
     // Dokument entgegennehmen, speichern und zurückgeben
     public Dokument dokumentSpeichern(Dokument dokument) {
+        return dokumentRepository.save(dokument);
+    }
+
+    // uploads/ angelegt, Datei wird dort gespeichert, Pfad kommt in die Datenbank
+    public Dokument dokumentSpeichern(Dokument dokument, MultipartFile datei) throws IOException {
+        String order = "upload/";
+        Path pfad = Paths.get(order);
+
+        if(!Files.exists(pfad)) {
+            Files.createDirectories(pfad);
+        }
+
+        String dateiname = datei.getOriginalFilename();
+        Path dateiPfad = pfad.resolve(dateiname);
+
+        dokument.setName(dateiname);
+        dokument.setDateipfad(dateiPfad.toString());
+
         return dokumentRepository.save(dokument);
     }
 
