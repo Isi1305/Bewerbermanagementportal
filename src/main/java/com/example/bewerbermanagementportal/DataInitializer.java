@@ -7,6 +7,7 @@ import com.example.bewerbermanagementportal.entity.Stelle;
 import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import com.example.bewerbermanagementportal.repository.StelleRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,10 +16,16 @@ public class DataInitializer implements CommandLineRunner {
 
     private final StelleRepository stelleRepository;
     private final NutzerRepository nutzerRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public DataInitializer(StelleRepository stelleRepository, NutzerRepository nutzerRepository) {
+    public DataInitializer(
+            StelleRepository stelleRepository,
+            NutzerRepository nutzerRepository,
+            PasswordEncoder passwordEncoder
+    ) {
         this.stelleRepository = stelleRepository;
         this.nutzerRepository = nutzerRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -33,7 +40,7 @@ public class DataInitializer implements CommandLineRunner {
         Nutzer recruiter = new Nutzer();
         recruiter.setName("Max Musterman");
         recruiter.setEmail("recruiter@text.de");
-        recruiter.setPasswort("1234");
+        recruiter.setPasswort(passwordEncoder.encode("1234"));
         recruiter.setRolle(Rolle.RECRUITER);
 
         nutzerRepository.save(recruiter);
