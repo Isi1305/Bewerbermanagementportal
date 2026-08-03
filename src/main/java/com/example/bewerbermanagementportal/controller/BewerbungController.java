@@ -133,4 +133,20 @@ public class BewerbungController {
 
         return "bewerbungen";
     }
+
+    @PostMapping("/bewerbungen/{id}/notiz")
+    public String notizSpeichern(
+            @PathVariable Long id,
+            @RequestParam String notiz
+    ) {
+
+        Bewerbung bewerbung = bewerbungRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Bewerbung nicht gefunden"));
+
+        bewerbung.setNotiz(notiz);
+
+        bewerbungRepository.save(bewerbung);
+
+        return "redirect:/recruiter/bewerbungen";
+    }
 }
