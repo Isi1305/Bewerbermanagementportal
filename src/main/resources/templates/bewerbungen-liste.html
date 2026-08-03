@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <body>
+
+    <h1>
+        Bewerbungen für:
+        <span th:text="${stelle.titel}"></span>
+    </h1>
+
+    <div th:each="bewerbung : ${beerbungen}">
+
+        <h3>
+            <span th:text="${bewerbung.vorname}"></span>
+            <span th:text="${bewerbung.nachname}"></span>
+        </h3>
+
+        <p th:text="${bewerbung.email}"></p>
+
+        <p>
+            Status:
+            <span th:text="${bewerbung.status}"></span>
+        </p>
+
+
+        <form th:action="@{/bewerbungen/{id}/status(id=${bewerbung.id})}" method="post">
+
+            <select name="neuerStatus">
+
+                <option value="EINGANG">Eingang</option>
+                <option value="INTERVIEW">Interview</option>
+                <option value="ANGEBOT">Angebot</option>
+                <option value="ABGELEHNT">Abgelehnt</option>
+
+            </select>
+
+            <button type="submit">
+                Status ändern
+            </button>
+
+        </form>
+
+
+    </div>
+
+    </body>
+</html>

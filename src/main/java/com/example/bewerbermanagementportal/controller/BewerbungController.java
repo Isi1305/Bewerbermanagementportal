@@ -94,4 +94,15 @@ public class BewerbungController {
         model.addAttribute("stelleId", stelleId);
         return "bewerbung-formular";
     }
+
+    // Stelle wird gesucht, geladen und Thymeleaf bekommt die Liste
+    @GetMapping("/stellen/{id}/bewerbungen")
+    public String bewerbungenAnzeigen(@PathVariable Long id, Model model) {
+        Stelle stelle = stelleRepository.findById(id).get();
+
+        model.addAttribute("stelle", stelle);
+        model.addAttribute("bewerbungen", bewerbungService.bewerbungenProStelle(stelle));
+
+        return "bewerbungen-liste";
+    }
 }
