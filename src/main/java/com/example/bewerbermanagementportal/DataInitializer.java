@@ -24,6 +24,10 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
+        if (stelleRepository.count() > 0) {
+            return;
+        }
+
         System.out.println("Testdaten werden geladen");
 
         Nutzer recruiter = new Nutzer();
