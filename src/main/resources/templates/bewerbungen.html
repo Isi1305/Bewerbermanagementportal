@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<h1>Bewerbungen</h1>
+
+<table border="1">
+
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Stelle</th>
+        <th>Status</th>
+        <th>Notiz</th>
+    </tr>
+
+
+    <tr th:each="bewerbung : ${bewerbungen}">
+
+        <td th:text="${bewerbung.vorname + ' ' + bewerbung.nachname}">
+        </td>
+
+        <td th:text="${bewerbung.email}">
+        </td>
+
+        <td th:text="${bewerbung.telefon}">
+        </td>
+
+        <td th:text="${bewerbung.stelle.titel}">
+        </td>
+
+        <td th:text="${bewerbung.status}">
+        </td>
+
+        <td>
+            <textarea placeholder="Notiz"></textarea>
+        </td>
+
+    </tr>
+
+</table>
+
+</body>
+</html>

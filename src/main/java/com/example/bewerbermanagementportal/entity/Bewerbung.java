@@ -31,6 +31,9 @@ public class Bewerbung {
     @Column(nullable = false)
     private boolean datenschutzAkzeptiert;
 
+    @Column(columnDefinition = "TEXT")
+    private String notiz;
+
     // Getter-Setter für id
     public void setId(Long id) {
         this.id = id;
@@ -92,6 +95,15 @@ public class Bewerbung {
 
     public boolean isDatenschutzAkzeptiert() {
         return datenschutzAkzeptiert;
+    }
+
+    // Getter-Setter für notiz
+    public void setNotiz(String notiz) {
+        this.notiz = notiz;
+    }
+
+    public String getNotiz() {
+        return notiz;
     }
 
     // Nutzer mit Rolle BEWERBER (technisch Typ Nutzer, Rollenprüfung erfolgt im Service)
