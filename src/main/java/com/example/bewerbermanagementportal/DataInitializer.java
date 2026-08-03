@@ -1,9 +1,7 @@
 package com.example.bewerbermanagementportal;
 
-import com.example.bewerbermanagementportal.entity.Karrierestatus;
-import com.example.bewerbermanagementportal.entity.Nutzer;
-import com.example.bewerbermanagementportal.entity.Rolle;
-import com.example.bewerbermanagementportal.entity.Stelle;
+import com.example.bewerbermanagementportal.entity.*;
+import com.example.bewerbermanagementportal.repository.BewerbungRepository;
 import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import com.example.bewerbermanagementportal.repository.StelleRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -17,15 +15,18 @@ public class DataInitializer implements CommandLineRunner {
     private final StelleRepository stelleRepository;
     private final NutzerRepository nutzerRepository;
     private final PasswordEncoder passwordEncoder;
+    private final BewerbungRepository bewerbungRepository;
 
     public DataInitializer(
             StelleRepository stelleRepository,
             NutzerRepository nutzerRepository,
-            PasswordEncoder passwordEncoder
+            PasswordEncoder passwordEncoder,
+            BewerbungRepository bewerbungRepository
     ) {
         this.stelleRepository = stelleRepository;
         this.nutzerRepository = nutzerRepository;
         this.passwordEncoder = passwordEncoder;
+        this.bewerbungRepository = bewerbungRepository;
     }
 
     @Override
@@ -57,5 +58,30 @@ public class DataInitializer implements CommandLineRunner {
         stelle.setRecruiter(recruiter);
 
         stelleRepository.save(stelle);
+
+        Nutzer bewerber = new Nutzer();
+
+        bewerber.setName("Anna Beispiel");
+        bewerber.setEmail("anna@test.de");
+        bewerber.setPasswort("1234");
+        bewerber.setRolle(Rolle.BEWERBER);
+
+        nutzerRepository.save(bewerber);
+
+
+        Bewerbung bewerbung = new Bewerbung();
+
+        bewerbung.setBewerber(bewerber);
+        bewerbung.setStelle(stelle);
+
+        bewerbung.setVorname("Anna");
+        bewerbung.setNachname("Beispiel");
+        bewerbung.setEmail("anna@test.de");
+        bewerbung.setTelefon("0123456789");
+
+        bewerbung.setDatenschutzAkzeptiert(true);
+        bewerbung.setStatus(BewerbungStatus.EINGANG);
+
+        bewerbungRepository.save(bewerbung);
     }
 }
