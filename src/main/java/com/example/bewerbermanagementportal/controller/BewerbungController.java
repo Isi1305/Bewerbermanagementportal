@@ -110,8 +110,21 @@ public class BewerbungController {
         return "bewerbungen-liste";
     }
 
+    // nicht eingeloggt zum Login, Bewerber zurück zur Startseite und Recruiter kann Bewerbungen sehen
     @GetMapping("/recruiter/bewerbungen")
-    public String bewerbungen(Model model) {
+    public String alleBewerbungen(HttpSession session, Model model) {
+
+        Long nutzerId = (Long) session.getAttribute("nutzerId");
+
+        if(nutzerId == null) {
+            return "redirect:/login";
+        }
+
+        Nutzer nutzer = nutzerRepository.findById(nutzerId).get();
+
+        if(nutzer.getRolle() != Rolle.RECRUITER) {
+            return "redirect:/startseite";
+        }
 
         model.addAttribute(
                 "bewerbungen",

@@ -25,9 +25,11 @@ public class SecurityConfig {
                                 "/bewerbung",
                                 "/registrieren",
                                 "/login",
-                                "/startseite"
+                                "/startseite",
+                                "/recruiter/**"
                         ).permitAll()
-                        .anyRequest().authenticated()
+
+                        .anyRequest().permitAll()
                 );
 
         return http.build();
