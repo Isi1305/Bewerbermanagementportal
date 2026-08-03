@@ -1,6 +1,7 @@
 package com.example.bewerbermanagementportal.controller;
 
 import com.example.bewerbermanagementportal.entity.*;
+import com.example.bewerbermanagementportal.repository.BewerbungRepository;
 import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import com.example.bewerbermanagementportal.repository.StelleRepository;
 import com.example.bewerbermanagementportal.service.BewerbungService;
@@ -19,15 +20,18 @@ public class BewerbungController {
     private final NutzerRepository nutzerRepository;
     private final StelleRepository stelleRepository;
     private final DokumentService dokumentService;
+    private final BewerbungRepository bewerbungRepository;
 
     public BewerbungController(BewerbungService bewerbungService,
                                NutzerRepository nutzerRepository,
                                StelleRepository stelleRepository,
-                               DokumentService dokumentService) {
+                               DokumentService dokumentService,
+                               BewerbungRepository bewerbungRepository) {
         this.bewerbungService = bewerbungService;
         this.nutzerRepository = nutzerRepository;
         this.stelleRepository = stelleRepository;
         this.dokumentService = dokumentService;
+        this.bewerbungRepository = bewerbungRepository;
     }
 
     // Einreichen der Bewerbung und Weiterleitung zurück zur Stellendetailseite
@@ -104,5 +108,16 @@ public class BewerbungController {
         model.addAttribute("bewerbungen", bewerbungService.bewerbungenProStelle(stelle));
 
         return "bewerbungen-liste";
+    }
+
+    @GetMapping("/recruiter/bewerbungen")
+    public String bewerbungen(Model model) {
+
+        model.addAttribute(
+                "bewerbungen",
+                bewerbungRepository.findAll()
+        );
+
+        return "bewerbungen";
     }
 }
