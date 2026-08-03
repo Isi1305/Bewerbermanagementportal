@@ -5,6 +5,13 @@
     <body>
         <h1>Bewerbung</h1>
 
+        <p>
+            Zum Absenden der Bewerbung benötigen Sie ein Benutzerkonto.
+        </p>
+
+        <a th:href="@{/registrieren}">Registrieren</a>
+        <a th:href="@{/login}">Login</a>
+
         <form th:action="@{/bewerbung}" method="post" enctype="multipart/form-data"> <!-- Beim Klick auf Jetzt Bewerben werden die Daten an /bewerbung geschickt -->
             <label>
                 Lebenslauf:

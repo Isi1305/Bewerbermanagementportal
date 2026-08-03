@@ -36,6 +36,22 @@ public class DokumentService {
         }
 
         String dateiname = datei.getOriginalFilename();
+
+        String endung = dateiname.substring(dateiname.lastIndexOf(".") + 1).toUpperCase();
+
+        if(endung.equals("PDF")) {
+            dokument.setDokumentTyp(Dokument.DokumentTyp.PDF);
+        }
+        else if(endung.equals("DOCX")) {
+            dokument.setDokumentTyp(Dokument.DokumentTyp.DOCX);
+        }
+        else if(endung.equals("JPG")) {
+            dokument.setDokumentTyp(Dokument.DokumentTyp.JPG);
+        }
+        else if(endung.equals("TXT")) {
+            dokument.setDokumentTyp(Dokument.DokumentTyp.TXT);
+        }
+
         Path dateiPfad = pfad.resolve(dateiname);
 
         Files.write(dateiPfad, datei.getBytes());
