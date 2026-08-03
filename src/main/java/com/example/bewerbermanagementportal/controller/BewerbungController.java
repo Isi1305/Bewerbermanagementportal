@@ -7,6 +7,7 @@ import com.example.bewerbermanagementportal.entity.Stelle;
 import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import com.example.bewerbermanagementportal.repository.StelleRepository;
 import com.example.bewerbermanagementportal.service.BewerbungService;
+import com.example.bewerbermanagementportal.service.DokumentService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +19,16 @@ public class BewerbungController {
     private final BewerbungService bewerbungService;
     private final NutzerRepository nutzerRepository;
     private final StelleRepository stelleRepository;
+    private final DokumentService dokumentService;
 
-    public BewerbungController(BewerbungService bewerbungService, NutzerRepository nutzerRepository, StelleRepository stelleRepository) {
+    public BewerbungController(BewerbungService bewerbungService,
+                               NutzerRepository nutzerRepository,
+                               StelleRepository stelleRepository,
+                               DokumentService dokumentService) {
         this.bewerbungService = bewerbungService;
         this.nutzerRepository = nutzerRepository;
         this.stelleRepository = stelleRepository;
+        this.dokumentService = dokumentService;
     }
 
     // Einreichen der Bewerbung und Weiterleitung zurück zur Stellendetailseite

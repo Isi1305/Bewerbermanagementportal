@@ -37,6 +37,8 @@ public class DokumentService {
         String dateiname = datei.getOriginalFilename();
         Path dateiPfad = pfad.resolve(dateiname);
 
+        Files.write(dateiPfad, datei.getBytes());
+
         dokument.setName(dateiname);
         dokument.setDateipfad(dateiPfad.toString());
 
