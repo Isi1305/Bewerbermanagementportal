@@ -1,9 +1,6 @@
 package com.example.bewerbermanagementportal.controller;
 
-import com.example.bewerbermanagementportal.entity.Bewerbung;
-import com.example.bewerbermanagementportal.entity.BewerbungStatus;
-import com.example.bewerbermanagementportal.entity.Nutzer;
-import com.example.bewerbermanagementportal.entity.Stelle;
+import com.example.bewerbermanagementportal.entity.*;
 import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import com.example.bewerbermanagementportal.repository.StelleRepository;
 import com.example.bewerbermanagementportal.service.BewerbungService;
@@ -13,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 public class BewerbungController {
@@ -43,7 +42,7 @@ public class BewerbungController {
             @RequestParam("lebenslauf") MultipartFile lebenslauf,
             @RequestParam("anschreiben") MultipartFile anschreiben,
             HttpSession session
-    ) {
+    ) throws IOException {
 
         if(!datenschutzAkzeptiert) {
             throw new IllegalArgumentException("Datenschutz muss akzeptiert werden");
@@ -70,8 +69,15 @@ public class BewerbungController {
         bewerbung.setTelefon(telefon);
         bewerbung.setDatenschutzAkzeptiert(datenschutzAkzeptiert);
 
-        bewerbungService.bewerbungEinreichen(bewerbung);
+        Bewerbung gespeicherteBewerbung = bewerbungService.bewerbungEinreichen(bewerbung);
 
+        Dokument lebenslaufDokument = new Dokument();
+        lebenslaufDokument.setBewerbung(gespeicherteBewerbung);
+        dokumentService.dokumentSpeichern(lebenslaufDokument, lebenslauf);
+
+        Dokument anschreibenDokument = new Dokument();
+        anschreibenDokument.setBewerbung(gespeicherteBewerbung);
+        dokumentService.dokumentSpeichern(anschreibenDokument, anschreiben);
 
         return "redirect:/stellen/" + stelleId;
     }

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -41,6 +42,7 @@ public class DokumentService {
 
         dokument.setName(dateiname);
         dokument.setDateipfad(dateiPfad.toString());
+        dokument.setUploadDatum(LocalDate.now());
 
         return dokumentRepository.save(dokument);
     }
