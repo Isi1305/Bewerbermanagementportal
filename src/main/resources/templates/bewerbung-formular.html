@@ -5,11 +5,20 @@
     <body>
         <h1>Bewerbung</h1>
 
-        <form th:action="@{/bewerbung}" method="post"> <!-- Beim Klick auf Jetzt Bewerben werden die Daten an /bewerbung geschickt -->
+        <form th:action="@{/bewerbung}" method="post" enctype="multipart/form-data"> <!-- Beim Klick auf Jetzt Bewerben werden die Daten an /bewerbung geschickt -->
+            <label>
+                Lebenslauf:
+                <input type="file" name="lebenslauf">
+            </label>
+
+            <label>
+                <input type="file" name="anschreiben">
+            </label>
+
             <input type="text" name="vorname" placeholder="Vorname">
             <input type="text" name="nachname" placeholder="Nachname">
             <input type="text" name="email" placeholder="E-Mail">
-            <input type="text" name="telefon" placeholder="Telefon">
+            <input type="tel" name="telefon" placeholder="Telefon">
 
             <label>
                 <input type="checkbox" name="datenschutzAkzeptiert">
