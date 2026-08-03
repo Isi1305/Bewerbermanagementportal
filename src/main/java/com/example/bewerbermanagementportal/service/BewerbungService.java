@@ -20,7 +20,12 @@ public class BewerbungService {
     // Status kommt rein als EINGANG
     public Bewerbung bewerbungEinreichen(Bewerbung bewerbung) {
         bewerbung.setStatus(BewerbungStatus.EINGANG);
-        return bewerbungRepository.save(bewerbung);
+
+        Bewerbung gespeichert = bewerbungRepository.save(bewerbung);
+
+        System.out.println("Bewerbung gespeichert: " + gespeichert.getId());
+
+        return gespeichert;
     }
 
     // Status Umwandlung und suche nach ID
