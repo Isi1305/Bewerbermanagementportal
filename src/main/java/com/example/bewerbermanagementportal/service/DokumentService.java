@@ -28,8 +28,9 @@ public class DokumentService {
 
     // uploads/ angelegt, Datei wird dort gespeichert, Pfad kommt in die Datenbank
     public Dokument dokumentSpeichern(Dokument dokument, MultipartFile datei) throws IOException {
-        String order = "upload/";
-        Path pfad = Paths.get(order);
+        String ordner = "upload/";
+
+        Path pfad = Paths.get(ordner);
 
         if(!Files.exists(pfad)) {
             Files.createDirectories(pfad);
@@ -37,7 +38,10 @@ public class DokumentService {
 
         String dateiname = datei.getOriginalFilename();
 
-        String endung = dateiname.substring(dateiname.lastIndexOf(".") + 1).toUpperCase();
+        String endung = "";
+        if(dateiname.contains(".")) {
+            endung = dateiname.substring(dateiname.lastIndexOf(".") + 1).toUpperCase();
+        }
 
         if(endung.equals("PDF")) {
             dokument.setDokumentTyp(Dokument.DokumentTyp.PDF);
