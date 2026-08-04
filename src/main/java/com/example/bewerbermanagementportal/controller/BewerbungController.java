@@ -90,7 +90,7 @@ public class BewerbungController {
     @PostMapping("/bewerbungen/{id}/status")
     public String statusAendern(@PathVariable Long id, @RequestParam BewerbungStatus neuerStatus) {
         bewerbungService.statusAendern(id, neuerStatus);
-        return "redirect:/stellen";
+        return "redirect:/recruiter/bewerbungen";
     }
 
     @GetMapping("/bewerbung")
