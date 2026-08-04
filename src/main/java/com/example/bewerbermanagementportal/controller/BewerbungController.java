@@ -131,6 +131,12 @@ public class BewerbungController {
                 bewerbungRepository.findAll()
         );
 
+        for(Bewerbung bewerbung : bewerbungen) {
+            bewerbung.setDokumente(
+                    dokumentService.dokumenteProBewerbung(bewerbung)
+            );
+        }
+
         return "bewerbungen";
     }
 

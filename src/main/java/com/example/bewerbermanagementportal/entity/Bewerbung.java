@@ -1,6 +1,9 @@
 package com.example.bewerbermanagementportal.entity;
 
 import jakarta.persistence.*;
+import jakarta.websocket.OnError;
+
+import java.util.List;
 
 @Entity
 public class Bewerbung {
@@ -130,5 +133,13 @@ public class Bewerbung {
 
     public Stelle getStelle() {
         return stelle;
+    }
+
+    // Bewerbung bekommt eine Liste der Dokumente
+    @OneToMany(mappedBy = "bewerbung")
+    private List<Dokument> dokumente;
+
+    public List<Dokument> getDokumente() {
+        return dokumente;
     }
 }
