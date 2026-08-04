@@ -1,7 +1,6 @@
 package com.example.bewerbermanagementportal.entity;
 
 import jakarta.persistence.*;
-import jakarta.websocket.OnError;
 
 import java.util.List;
 
