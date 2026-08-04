@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class BewerbungController {
@@ -126,16 +127,15 @@ public class BewerbungController {
             return "redirect:/startseite";
         }
 
-        model.addAttribute(
-                "bewerbungen",
-                bewerbungRepository.findAll()
-        );
+        List<Bewerbung> bewerbungen = bewerbungRepository.findAll();
 
         for(Bewerbung bewerbung : bewerbungen) {
             bewerbung.setDokumente(
                     dokumentService.dokumenteProBewerbung(bewerbung)
             );
         }
+
+        model.addAttribute("bewerbungen", bewerbungen);
 
         return "bewerbungen";
     }

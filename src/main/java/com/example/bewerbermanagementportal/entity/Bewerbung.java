@@ -109,6 +109,7 @@ public class Bewerbung {
         return notiz;
     }
 
+
     // Nutzer mit Rolle BEWERBER (technisch Typ Nutzer, Rollenprüfung erfolgt im Service)
     @ManyToOne
     @JoinColumn(name = "nutzer_id", nullable = false)
@@ -138,6 +139,10 @@ public class Bewerbung {
     // Bewerbung bekommt eine Liste der Dokumente
     @OneToMany(mappedBy = "bewerbung")
     private List<Dokument> dokumente;
+
+    public void setDokumente(List<Dokument> dokumente) {
+        this.dokumente = dokumente;
+    }
 
     public List<Dokument> getDokumente() {
         return dokumente;
