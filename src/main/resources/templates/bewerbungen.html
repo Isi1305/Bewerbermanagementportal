@@ -30,9 +30,37 @@
         <td th:text="${bewerbung.stelle.titel}">
         </td>
 
-        <td th:text="${bewerbung.status}">
-        </td>
+        <td>
+            <form th:action="@{/bewerbungen/{id}/status(id=${bewerbung.id})}" method="post">
+                <select name="neuerStatus">
+                    <option th:value="EINGANG"
+                            th:selected="${bewerbung.status.name() == 'EINGANG'}">
+                        Eingang
+                    </option>
 
+                    <option th:value="INTERVIEW"
+                            th:selected="${bewerbung.status.name() == 'INTERVIEW'}">
+                        Interview
+                    </option>
+
+                    <option th:value="ANGEBOT"
+                            th:selected="${bewerbung.status.name() == 'ANGEBOT'}">
+                        Angebot
+                    </option>
+
+                    <option th:value="ABGELEHNT"
+                            th:selected="${bewerbung.status.name() == 'ABGELEHNT'}">
+                        Abgelehnt
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    Aktualisieren
+                </button>
+
+            </form>
+        </td>
 
         <td>
             <form th:action="@{/bewerbungen/{id}/notiz(id=${bewerbung.id})}" method="post">
