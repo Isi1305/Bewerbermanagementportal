@@ -13,6 +13,7 @@
         <th>Stelle</th>
         <th>Status</th>
         <th>Notiz</th>
+        <th>Dokumente</th>
     </tr>
 
 
@@ -75,6 +76,13 @@
                 </button>
 
             </form>
+        </td>
+
+        <td>
+            <div th:each="dokument : ${bewerbung.dokumente}">
+                <span th:text="${dokument.name}"></span>
+                <br>
+            </div>
         </td>
 
     </tr>
