@@ -49,6 +49,27 @@ public class BewerbungController {
             HttpSession session
     ) throws IOException {
 
+        // Validierungen für das Bewerbungsformular
+        if(lebenslauf.isEmpty() || anschreiben.isEmpty()) {
+            throw new IllegalArgumentException("Lebenslauf und Anschreiben müssen hochgeladen werden");
+        }
+
+        if(vorname == null || vorname.trim().isEmpty()) {
+            throw new IllegalArgumentException("Vorname darf nicht leer sein");
+        }
+
+        if(nachname == null || nachname.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nachname darf nicht leer sein");
+        }
+
+        if(email == null || !email.contains("@")) {
+            throw new IllegalArgumentException("Ungültige E-Mail-Adresse");
+        }
+
+        if(telefon == null || telefon.length() < 5) {
+            throw new IllegalArgumentException("Telefonnummer ungültig");
+        }
+
         if(!datenschutzAkzeptiert) {
             throw new IllegalArgumentException("Datenschutz muss akzeptiert werden");
         }
