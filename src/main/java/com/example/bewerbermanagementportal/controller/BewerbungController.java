@@ -54,6 +54,10 @@ public class BewerbungController {
             throw new IllegalArgumentException("Lebenslauf und Anschreiben müssen hochgeladen werden");
         }
 
+        if(lebenslauf.getSize() > 5_000_000 || anschreiben.getSize() > 5_000_000) {
+            throw new IllegalArgumentException("Dateien dürfen maximal 5 MB groß sein");
+        }
+
         if(vorname == null || vorname.trim().isEmpty()) {
             throw new IllegalArgumentException("Vorname darf nicht leer sein");
         }
