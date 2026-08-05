@@ -1,0 +1,16 @@
+:root {
+    --bg-color: #f1f9f1;
+    --primary-color: #2f6d4f;
+    --font-heading: Poppins, sans-serif;
+    --font-body: "Open Sans", sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-body);
+    margin: 0;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+}
