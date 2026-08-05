@@ -25,7 +25,7 @@ public class DokumentController {
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION,
-                        "inline; filename=\"" + dateiname + "\"")
+                        "attachment; filename=\"" + dateiname + "\"")
                 .body(resource);
     }
 }
