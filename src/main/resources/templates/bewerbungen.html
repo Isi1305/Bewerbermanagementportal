@@ -80,7 +80,9 @@
 
         <td>
             <div th:each="dokument : ${bewerbung.dokumente}">
-                <span th:text="${dokument.name}"></span>
+                <a th:href="@{/dokument/{name}(name=${dokument.name})}"
+                   th:text="${dokument.name}">
+                </a>
                 <br>
             </div>
         </td>
