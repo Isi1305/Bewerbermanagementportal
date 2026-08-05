@@ -46,6 +46,7 @@ public class DataInitializer implements CommandLineRunner {
 
         nutzerRepository.save(recruiter);
 
+        // Feste Anzeige
         Stelle stelle = new Stelle();
         stelle.setTitel("Java Entwickler");
         stelle.setTyp("Vollzeit");
@@ -58,6 +59,37 @@ public class DataInitializer implements CommandLineRunner {
         stelle.setRecruiter(recruiter);
 
         stelleRepository.save(stelle);
+
+        // Feste Anzeige
+        Stelle stelle2 = new Stelle();
+        stelle2.setTitel("DevOps Engineer (m/w/d)");
+        stelle2.setTyp("Vollzeit");
+        stelle2.setBeschreibung("Über die Stelle\n" +
+                "Wir suchen einen erfahrenen DevOps Engineer, der unser Entwicklungsteam \n" +
+                "bei der Automatisierung und Optimierung unserer CI/CD-Prozesse unterstützt.\n" +
+                "\n" +
+                "Deine Aufgaben\n" +
+                "Verwaltung und Weiterentwicklung unserer Cloud-Infrastruktur\n" +
+                "Implementierung von CI/CD-Pipelines\n" +
+                "Monitoring und Fehleranalyse der Systeme\n" +
+                "\n" +
+                "Das bringst Du mit\n" +
+                "Erfahrung mit Docker, Kubernetes oder ähnlichen Tools\n" +
+                "Kenntnisse in Linux-Administration\n" +
+                "Teamfähigkeit und strukturierte Arbeitsweise\n" +
+                "\n" +
+                "Das bieten wir\n" +
+                "Flexible Arbeitszeiten & Remote-Option\n" +
+                "Modernes Arbeitsumfeld\n" +
+                "30 Tage Urlaub");
+        stelle2.setStandort("Kaiserslautern");
+
+        stelle2.setArbeitsbereich("IT");
+        stelle2.setKarrierestatus(Karrierestatus.EINSTEIGER);
+
+        stelle2.setRecruiter(recruiter);
+
+        stelleRepository.save(stelle2);
 
         Nutzer bewerber = new Nutzer();
 
