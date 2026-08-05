@@ -5,10 +5,42 @@
     </head>
 
     <body>
+        <!-- Hamburger Menü -->
+        <button class="hamburger" onclick="menuOeffnen()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menü, das aufgeht -->
+        <div class="nav-overlay" id="menu">
+
+            <button class="close-btn" onclick="menuSchliessen()">
+                ✕
+            </button>
+
+            <nav>
+                <a href="/startseite">Startseite</a>
+                <a href="/login">Login</a>
+                <a href="/registrieren">Registrieren</a>
+            </nav>
+
+        </div>
+
         <form th:action="@{/login}" method="post">
             <input type="email" name="email" placeholder="E-Mail">
             <input type="password" name="passwort" placeholder="Passwort">
             <button type="submit">Login</button>
         </form>
+
+        <script>
+            function menuOeffnen() {
+                document.getElementById("menu").style.display = "flex";
+            }
+
+            function menuSchliessen() {
+                document.getElementById("menu").style.display = "none";
+            }
+        </script>
     </body>
 </html>

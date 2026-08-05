@@ -5,12 +5,43 @@
 </head>
 
 <body>
+    <!-- Hamburger Menü -->
+    <button class="hamburger" onclick="menuOeffnen()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-<h1>Fehler</h1>
+    <!-- Menü, das aufgeht -->
+    <div class="nav-overlay" id="menu">
 
-<p th:text="${fehler}"></p>
+        <button class="close-btn" onclick="menuSchliessen()">
+            ✕
+        </button>
 
-<a href="/startseite">Zurück</a>
+        <nav>
+            <a href="/startseite">Startseite</a>
+            <a href="/login">Login</a>
+            <a href="/registrieren">Registrieren</a>
+        </nav>
+
+    </div>
+
+    <h1>Fehler</h1>
+
+    <p th:text="${fehler}"></p>
+
+    <a href="/startseite">Zurück</a>
+
+    <script>
+        function menuOeffnen() {
+            document.getElementById("menu").style.display = "flex";
+        }
+
+        function menuSchliessen() {
+            document.getElementById("menu").style.display = "none";
+        }
+    </script>
 
 </body>
 </html>

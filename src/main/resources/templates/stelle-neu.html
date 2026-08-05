@@ -5,6 +5,28 @@
     </head>
 
     <body>
+
+        <!-- Hamburger Menü -->
+        <button class="hamburger" onclick="menuOeffnen()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menü, das aufgeht -->
+        <div class="nav-overlay" id="menu">
+
+            <button class="close-btn" onclick="menuSchliessen()">
+                ✕
+            </button>
+
+            <nav>
+                <a href="/startseite">Startseite</a>
+                <a href="/login">Login</a>
+                <a href="/registrieren">Registrieren</a>
+            </nav>
+
+        </div>
         <form th:action="@{/stellen/neu}" method="post">
             <input type="text" name="titel" placeholder="Titel">
             <input type="text" name="beschreibung" placeholder="Beschreibung">
@@ -28,5 +50,15 @@
             </select>
             <button type="submit">Anlegen</button>
         </form>
+
+        <script>
+            function menuOeffnen() {
+                document.getElementById("menu").style.display = "flex";
+            }
+
+            function menuSchliessen() {
+                document.getElementById("menu").style.display = "none";
+            }
+        </script>
     </body>
 </html>

@@ -5,6 +5,29 @@
     </head>
 
     <body>
+
+        <!-- Hamburger Menü -->
+        <button class="hamburger" onclick="menuOeffnen()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menü, das aufgeht -->
+        <div class="nav-overlay" id="menu">
+
+            <button class="close-btn" onclick="menuSchliessen()">
+                ✕
+            </button>
+
+            <nav>
+                <a href="/startseite">Startseite</a>
+                <a href="/login">Login</a>
+                <a href="/registrieren">Registrieren</a>
+            </nav>
+
+        </div>
+
         <h1 th:text="${stelle.titel}"></h1>
         <p th:text="${stelle.beschreibung}"></p>
         <p th:text="${stelle.typ}"></p>
@@ -12,5 +35,15 @@
         <a th:href="@{/bewerbung(stelleId=${stelle.id})}">
             Jetzt Bewerben
         </a>
+
+        <script>
+            function menuOeffnen() {
+                document.getElementById("menu").style.display = "flex";
+            }
+
+            function menuSchliessen() {
+                document.getElementById("menu").style.display = "none";
+            }
+        </script>
     </body>
 </html>

@@ -5,96 +5,127 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
-<body>
+    <body>
+        <!-- Hamburger Menü -->
+        <button class="hamburger" onclick="menuOeffnen()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-<h1>Bewerbungen</h1>
+        <!-- Menü, das aufgeht -->
+        <div class="nav-overlay" id="menu">
 
-<table border="1">
+            <button class="close-btn" onclick="menuSchliessen()">
+                ✕
+            </button>
 
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Telefon</th>
-        <th>Stelle</th>
-        <th>Status</th>
-        <th>Notiz</th>
-        <th>Dokumente</th>
-    </tr>
+            <nav>
+                <a href="/startseite">Startseite</a>
+                <a href="/login">Login</a>
+                <a href="/registrieren">Registrieren</a>
+            </nav>
+
+        </div>
+
+        <h1>Bewerbungen</h1>
+
+        <table border="1">
+
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Stelle</th>
+                <th>Status</th>
+                <th>Notiz</th>
+                <th>Dokumente</th>
+            </tr>
 
 
-    <tr th:each="bewerbung : ${bewerbungen}">
+            <tr th:each="bewerbung : ${bewerbungen}">
 
-        <td th:text="${bewerbung.vorname + ' ' + bewerbung.nachname}">
-        </td>
+                <td th:text="${bewerbung.vorname + ' ' + bewerbung.nachname}">
+                </td>
 
-        <td th:text="${bewerbung.email}">
-        </td>
+                <td th:text="${bewerbung.email}">
+                </td>
 
-        <td th:text="${bewerbung.telefon}">
-        </td>
+                <td th:text="${bewerbung.telefon}">
+                </td>
 
-        <td th:text="${bewerbung.stelle.titel}">
-        </td>
+                <td th:text="${bewerbung.stelle.titel}">
+                </td>
 
-        <td>
-            <form th:action="@{/bewerbungen/{id}/status(id=${bewerbung.id})}" method="post">
-                <select name="neuerStatus">
-                    <option th:value="EINGANG"
-                            th:selected="${bewerbung.status.name() == 'EINGANG'}">
-                        Eingang
-                    </option>
+                <td>
+                    <form th:action="@{/bewerbungen/{id}/status(id=${bewerbung.id})}" method="post">
+                        <select name="neuerStatus">
+                            <option th:value="EINGANG"
+                                    th:selected="${bewerbung.status.name() == 'EINGANG'}">
+                                Eingang
+                            </option>
 
-                    <option th:value="INTERVIEW"
-                            th:selected="${bewerbung.status.name() == 'INTERVIEW'}">
-                        Interview
-                    </option>
+                            <option th:value="INTERVIEW"
+                                    th:selected="${bewerbung.status.name() == 'INTERVIEW'}">
+                                Interview
+                            </option>
 
-                    <option th:value="ANGEBOT"
-                            th:selected="${bewerbung.status.name() == 'ANGEBOT'}">
-                        Angebot
-                    </option>
+                            <option th:value="ANGEBOT"
+                                    th:selected="${bewerbung.status.name() == 'ANGEBOT'}">
+                                Angebot
+                            </option>
 
-                    <option th:value="ABGELEHNT"
-                            th:selected="${bewerbung.status.name() == 'ABGELEHNT'}">
-                        Abgelehnt
-                    </option>
+                            <option th:value="ABGELEHNT"
+                                    th:selected="${bewerbung.status.name() == 'ABGELEHNT'}">
+                                Abgelehnt
+                            </option>
 
-                </select>
+                        </select>
 
-                <button type="submit">
-                    Aktualisieren
-                </button>
+                        <button type="submit">
+                            Aktualisieren
+                        </button>
 
-            </form>
-        </td>
+                    </form>
+                </td>
 
-        <td>
-            <form th:action="@{/bewerbungen/{id}/notiz(id=${bewerbung.id})}" method="post">
+                <td>
+                    <form th:action="@{/bewerbungen/{id}/notiz(id=${bewerbung.id})}" method="post">
 
-        <textarea name="notiz"
-                  th:text="${bewerbung.notiz}"
-                  placeholder="Notiz">
-        </textarea>
+                <textarea name="notiz"
+                          th:text="${bewerbung.notiz}"
+                          placeholder="Notiz">
+                </textarea>
 
-                <button type="submit">
-                    Speichern
-                </button>
+                        <button type="submit">
+                            Speichern
+                        </button>
 
-            </form>
-        </td>
+                    </form>
+                </td>
 
-        <td>
-            <div th:each="dokument : ${bewerbung.dokumente}">
-                <a th:href="@{/dokument/{name}(name=${dokument.name})}"
-                   th:text="${dokument.name}">
-                </a>
-                <br>
-            </div>
-        </td>
+                <td>
+                    <div th:each="dokument : ${bewerbung.dokumente}">
+                        <a th:href="@{/dokument/{name}(name=${dokument.name})}"
+                           th:text="${dokument.name}">
+                        </a>
+                        <br>
+                    </div>
+                </td>
 
-    </tr>
+            </tr>
 
-</table>
+        </table>
 
-</body>
+        <script>
+            function menuOeffnen() {
+                document.getElementById("menu").style.display = "flex";
+            }
+
+            function menuSchliessen() {
+                document.getElementById("menu").style.display = "none";
+            }
+        </script>
+
+    </body>
 </html>

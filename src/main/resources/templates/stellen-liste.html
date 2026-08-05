@@ -5,6 +5,29 @@
     </head>
 
     <body>
+
+        <!-- Hamburger Menü -->
+        <button class="hamburger" onclick="menuOeffnen()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Menü, das aufgeht -->
+        <div class="nav-overlay" id="menu">
+
+            <button class="close-btn" onclick="menuSchliessen()">
+                ✕
+            </button>
+
+            <nav>
+                <a href="/startseite">Startseite</a>
+                <a href="/login">Login</a>
+                <a href="/registrieren">Registrieren</a>
+            </nav>
+
+        </div>
+
     <h1>Alle Stellen</h1>
     <ul>
         <li th:each="stelle : ${stellen}">
@@ -13,5 +36,15 @@
             </a>
         </li>
     </ul>
+
+        <script>
+            function menuOeffnen() {
+                document.getElementById("menu").style.display = "flex";
+            }
+
+            function menuSchliessen() {
+                document.getElementById("menu").style.display = "none";
+            }
+        </script>
     </body>
 </html>
