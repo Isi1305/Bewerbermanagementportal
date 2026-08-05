@@ -46,36 +46,44 @@ public class BewerbungController {
             @RequestParam boolean datenschutzAkzeptiert,
             @RequestParam("lebenslauf") MultipartFile lebenslauf,
             @RequestParam("anschreiben") MultipartFile anschreiben,
-            HttpSession session
+            HttpSession session,
+            Model model
     ) throws IOException {
 
         // Validierungen für das Bewerbungsformular
         if(lebenslauf.isEmpty() || anschreiben.isEmpty()) {
-            throw new IllegalArgumentException("Lebenslauf und Anschreiben müssen hochgeladen werden");
+            model.addAttribute("fehler", "Lebenslauf und Anschreiben müssen hochgeladen werden");
+            return "fehler";
         }
 
         if(lebenslauf.getSize() > 5_000_000 || anschreiben.getSize() > 5_000_000) {
-            throw new IllegalArgumentException("Dateien dürfen maximal 5 MB groß sein");
+            model.addAttribute("fehler", "Dateien dürfen maximal 5 MB groß sein");
+            return "fehler";
         }
 
         if(vorname == null || vorname.trim().isEmpty()) {
-            throw new IllegalArgumentException("Vorname darf nicht leer sein");
+            model.addAttribute("fehler", "Vorname darf nicht leer sein");
+            return "fehler";
         }
 
         if(nachname == null || nachname.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nachname darf nicht leer sein");
+            model.addAttribute("fehler", "Nachname darf nicht leer sein");
+            return "fehler";
         }
 
         if(email == null || !email.contains("@")) {
-            throw new IllegalArgumentException("Ungültige E-Mail-Adresse");
+            model.addAttribute("fehler", "Ungültige E-Mail-Adresse");
+            return "fehler";
         }
 
         if(telefon == null || telefon.length() < 5) {
-            throw new IllegalArgumentException("Telefonnummer ungültig");
+            model.addAttribute("fehler", "Telefonnummer ungültig");
+            return "fehler";
         }
 
         if(!datenschutzAkzeptiert) {
-            throw new IllegalArgumentException("Datenschutz muss akzeptiert werden");
+            model.addAttribute("fehler", "Datenschutz muss akzeptiert werden");
+            return "fehler";
         }
 
         Long nutzerId = (Long) session.getAttribute("nutzerId");
