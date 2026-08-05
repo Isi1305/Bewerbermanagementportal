@@ -114,3 +114,16 @@ h1, h2, h3 {
 .close-btn:hover {
     transform: rotate(90deg);
 }
+
+h1 {
+    color: var(--primary-color);
+    font-size: 60px;
+}
+
+button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+}

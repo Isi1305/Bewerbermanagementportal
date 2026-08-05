@@ -33,6 +33,26 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) {
 
         if (stelleRepository.count() > 0) {
+
+            Stelle stelle = stelleRepository.findByTitel("Java Entwickler")
+                    .orElse(null);
+
+            if(stelle != null) {
+                stelle.setArbeitsbereich("IT");
+                stelle.setKarrierestatus(Karrierestatus.EINSTEIGER);
+                stelleRepository.save(stelle);
+            }
+
+
+            Stelle stelle2 = stelleRepository.findByTitel("DevOps Engineer (m/w/d)")
+                    .orElse(null);
+
+            if(stelle2 != null) {
+                stelle2.setArbeitsbereich("IT");
+                stelle2.setKarrierestatus(Karrierestatus.EXPERTE);
+                stelleRepository.save(stelle2);
+            }
+
             return;
         }
 
@@ -85,7 +105,7 @@ public class DataInitializer implements CommandLineRunner {
         stelle2.setStandort("Kaiserslautern");
 
         stelle2.setArbeitsbereich("IT");
-        stelle2.setKarrierestatus(Karrierestatus.EINSTEIGER);
+        stelle2.setKarrierestatus(Karrierestatus.EXPERTE);
 
         stelle2.setRecruiter(recruiter);
 

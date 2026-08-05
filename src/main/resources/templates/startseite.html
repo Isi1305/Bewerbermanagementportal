@@ -64,7 +64,7 @@
         <!--offene Stellen-->
         <h2>Unsere offene Stellen</h2>
 
-        <div th:each="stelle : ${stellen}">
+        <div class="job-card" th:each="stelle : ${stellen}">
             <h3 th:text="${stelle.titel}"></h3>
 
             <p>

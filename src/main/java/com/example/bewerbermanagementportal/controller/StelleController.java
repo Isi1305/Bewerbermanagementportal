@@ -1,15 +1,13 @@
 package com.example.bewerbermanagementportal.controller;
 
+import com.example.bewerbermanagementportal.entity.Karrierestatus;
 import com.example.bewerbermanagementportal.entity.Stelle;
 import com.example.bewerbermanagementportal.repository.NutzerRepository;
 import com.example.bewerbermanagementportal.service.StelleService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StelleController {
@@ -48,5 +46,20 @@ public class StelleController {
         stelle.setRecruiter(nutzerRepository.findById(nutzerId).get());
         stelleService.stelleAnlegen(stelle);
         return "redirect:/stellen";
+    }
+
+    @GetMapping("/stellen/suche")
+    public String stellenSuchen(
+            @RequestParam String arbeitsbereich,
+            @RequestParam Karrierestatus karrierestatus,
+            Model model
+    ) {
+
+        model.addAttribute(
+                "stellen",
+                stelleService.stellenSuchen(arbeitsbereich, karrierestatus)
+        );
+
+        return "stellen-liste";
     }
 }
