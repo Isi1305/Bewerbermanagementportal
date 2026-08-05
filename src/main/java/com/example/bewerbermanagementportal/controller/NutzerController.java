@@ -1,6 +1,7 @@
 package com.example.bewerbermanagementportal.controller;
 
 import com.example.bewerbermanagementportal.entity.Nutzer;
+import com.example.bewerbermanagementportal.entity.Rolle;
 import com.example.bewerbermanagementportal.service.NutzerService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -38,8 +39,14 @@ public class NutzerController {
     // Beim Login die ID in der Session speichern
     @PostMapping("/login")
     public String login(@ModelAttribute Nutzer nutzer, HttpSession session) {
+
         Nutzer eingeloggterNutzer = nutzerService.login(nutzer);
         session.setAttribute("nutzerId", eingeloggterNutzer.getId());
+
+        if(eingeloggterNutzer.getRolle() == Rolle.RECRUITER) {
+            return "redirect:/recruiter/bewerbungen";
+        }
+
         return "redirect:/startseite";
     }
 }
