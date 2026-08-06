@@ -160,6 +160,7 @@ button {
     transition: 0.3s ease;
 }
 
+/* Startseite */
 .job-list {
     display: flex;
     gap: 20px;
@@ -183,3 +184,14 @@ button {
     border-radius: 16px;
     padding: 25px;
 }
+
+.search-row {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    text-align: center;
+}
+
+
