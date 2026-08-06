@@ -26,45 +26,47 @@
         </nav>
 
     </div>
+    <div class="container">
         <h1>Bewerbung</h1>
 
-        <p>
-            Zum Absenden der Bewerbung benötigen Sie ein Benutzerkonto.
-        </p>
+            <p>
+                Zum Absenden der Bewerbung benötigen Sie ein Benutzerkonto.
+            </p>
 
-        <a th:href="@{/registrieren}">Registrieren</a>
-        <a th:href="@{/login}">Login</a>
+            <a th:href="@{/registrieren}">Registrieren</a>
+            <a th:href="@{/login}">Login</a>
 
-        <form th:action="@{/bewerbung}" method="post" enctype="multipart/form-data"> <!-- Beim Klick auf Jetzt Bewerben werden die Daten an /bewerbung geschickt -->
-            <label>
-                Lebenslauf:
-                <input type="file" name="lebenslauf">
-            </label>
+            <form th:action="@{/bewerbung}" method="post" enctype="multipart/form-data"> <!-- Beim Klick auf Jetzt Bewerben werden die Daten an /bewerbung geschickt -->
+                <label>
+                    Lebenslauf:
+                    <input type="file" name="lebenslauf">
+                </label>
 
-            <label>
-                <input type="file" name="anschreiben">
-            </label>
+                <label>
+                    Anschreiben:
+                    <input type="file" name="anschreiben">
+                </label>
 
-            <input type="text" name="vorname" placeholder="Vorname">
-            <input type="text" name="nachname" placeholder="Nachname">
-            <input type="text" name="email" placeholder="E-Mail">
-            <input type="tel" name="telefon" placeholder="Telefon">
+                <input type="text" name="vorname" placeholder="Vorname">
+                <input type="text" name="nachname" placeholder="Nachname">
+                <input type="text" name="email" placeholder="E-Mail">
+                <input type="tel" name="telefon" placeholder="Telefon">
 
-            <label>
-                <input type="checkbox" name="datenschutzAkzeptiert">
-                Ich stimme der Verarbeitung meiner Daten gemäß Datenschutzbestimmungen zu.
-                <p>
-                    Ihre Daten werden ausschließlich für den Bewerbungsprozess verwendet.
-                </p>
-            </label>
+                <label>
+                    <input type="checkbox" name="datenschutzAkzeptiert">
+                    Ich stimme der Verarbeitung meiner Daten gemäß Datenschutzbestimmungen zu.
+                    <p>
+                        Ihre Daten werden ausschließlich für den Bewerbungsprozess verwendet.
+                    </p>
+                </label>
 
-            <input type="hidden" name="stelleId" th:value="${stelleId}">
+                <input type="hidden" name="stelleId" th:value="${stelleId}">
 
-            <button type="submit">
-                Jetzt Bewerben
-            </button>
-        </form>
-
+                <button type="submit">
+                    Jetzt Bewerben
+                </button>
+            </form>
+        </div>
         <script>
             function menuOeffnen() {
                 document.getElementById("menu").style.display = "flex";

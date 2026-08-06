@@ -37,12 +37,19 @@ h1, h2, h3 {
     font-family: var(--font-heading);
 }
 
+/* container und form */
 .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 0px;
 }
 
+form {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 15px;
+}
 
 /* Hamburger Menu */
 .hamburger {
@@ -190,9 +197,6 @@ button {
     margin-bottom: 20px;
 }
 
-form {
-    text-align: center;
-}
 
 /* Login */
 .login-wrapper {
@@ -206,12 +210,6 @@ form {
     color: var(--primary-color);
     text-decoration: none;
     font-size: 14px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 }
 
 /* Registrieren */
@@ -244,4 +242,4 @@ form {
     white-space: pre-line;
 }
 
-
+/* Bewerbungsformular */
