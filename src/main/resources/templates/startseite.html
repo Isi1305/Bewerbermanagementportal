@@ -38,7 +38,7 @@
 
             <form th:action="@{/stellen/suche}" method="get">
 
-                <div class="search-row"><!-- öffnet den Wrapper -->
+                <div class="search-row">
 
                     <label>Arbeitsbereich:</label>
                     <select name="arbeitsbereich">
@@ -55,7 +55,7 @@
                         <option value="EXPERTE">Experte</option>
                     </select>
 
-                </div><!-- schließt den Wrapper, VOR dem Button -->
+                </div>
 
                 <button type="submit">
                     Suchen
@@ -80,7 +80,7 @@
                         <span th:text="${stelle.typ}"></span>
                     </p>
 
-                    <a th:href="@{/stellen/{id}(id=${stelle.id})}">
+                    <a th:href="@{/stellen/{id}(id=${stelle.id})}" class="text-link2">
                         Mehr erfahren
                     </a>
 

@@ -197,6 +197,9 @@ button {
     margin-bottom: 20px;
 }
 
+.text-link2 {
+    color: var(--bg-color);
+}
 
 /* Login */
 .login-wrapper {
