@@ -237,6 +237,7 @@ button {
     border-radius: 50px;
     padding: 12px 20px;
     display: inline-block;
+    text-decoration: none;
 
     margin-top: 20px;
 }
@@ -278,3 +279,22 @@ button {
     margin-right: 30px;
     margin-left: 10px;
 }
+
+/* Bewerbungen */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+
+/* Stelle anlegen */

@@ -28,23 +28,26 @@
 
         </div>
 
-    <h1>Alle Stellen</h1>
-    <ul>
-        <li th:each="stelle : ${stellen}">
-            <a th:href="@{/stellen/{id}(id=${stelle.id})}"
-               th:text="${stelle.titel}">
-            </a>
-        </li>
-    </ul>
+        <div class="container">
+        <h1>Alle Stellen</h1>
+        <ul>
+            <li th:each="stelle : ${stellen}">
+                <a th:href="@{/stellen/{id}(id=${stelle.id})}"
+                   th:text="${stelle.titel}"
+                   class="text-link">
+                </a>
+            </li>
+        </ul>
+        </div>
 
-        <script>
-            function menuOeffnen() {
-                document.getElementById("menu").style.display = "flex";
-            }
+            <script>
+                function menuOeffnen() {
+                    document.getElementById("menu").style.display = "flex";
+                }
 
-            function menuSchliessen() {
-                document.getElementById("menu").style.display = "none";
-            }
-        </script>
+                function menuSchliessen() {
+                    document.getElementById("menu").style.display = "none";
+                }
+            </script>
     </body>
 </html>
