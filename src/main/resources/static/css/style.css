@@ -202,6 +202,12 @@ form {
     align-items: center;      /* vertikal */
 }
 
+.login-wrapper a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
 form {
     display: flex;
     flex-direction: column;
