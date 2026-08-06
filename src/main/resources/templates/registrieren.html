@@ -28,12 +28,14 @@
 
         </div>
 
-        <form th:action="@{/registrieren}" method="post">
-            <input type="text" name="name" placeholder="Name">
-            <input type="email" name="email" placeholder="E-Mail">
-            <input type="password" name="passwort" placeholder="Passwort">
-            <button type="submit">Registrieren</button>
-        </form>
+        <div class="auth-wrapper">
+            <form th:action="@{/registrieren}" method="post">
+                <input type="text" name="name" placeholder="Name">
+                <input type="email" name="email" placeholder="E-Mail">
+                <input type="password" name="passwort" placeholder="Passwort">
+                <button type="submit">Registrieren</button>
+            </form>
+        </div>
 
     <script>
         function menuOeffnen() {
