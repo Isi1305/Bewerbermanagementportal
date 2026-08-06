@@ -27,29 +27,23 @@
             </nav>
 
         </div>
-        <form th:action="@{/stellen/neu}" method="post">
-            <input type="text" name="titel" placeholder="Titel">
-            <input type="text" name="beschreibung" placeholder="Beschreibung">
-            <input type="text" name="typ" placeholder="Typ">
-            <input type="text" name="standort" placeholder="Standort">
-            <input type="text" name="arbeitsbereich" placeholder="Arbeitsbereich">
-            <select name="karrierestatus">
+        <div class="container">
+            <h1>Neue Stelle anlegen</h1>
 
-                <option value="STUDENT">
-                    Student
-                </option>
-
-                <option value="EINSTEIGER">
-                    Einsteiger
-                </option>
-
-                <option value="EXPERTE">
-                    Experte
-                </option>
-
-            </select>
-            <button type="submit">Anlegen</button>
-        </form>
+            <form th:action="@{/stellen/neu}" method="post">
+                <input type="text" name="titel" placeholder="Titel">
+                <input type="text" name="beschreibung" placeholder="Beschreibung">
+                <input type="text" name="typ" placeholder="Typ">
+                <input type="text" name="standort" placeholder="Standort">
+                <input type="text" name="arbeitsbereich" placeholder="Arbeitsbereich">
+                <select name="karrierestatus">
+                    <option value="STUDENT">Student</option>
+                    <option value="EINSTEIGER">Einsteiger</option>
+                    <option value="EXPERTE">Experte</option>
+                </select>
+                <button type="submit">Anlegen</button>
+            </form>
+        </div>
 
         <script>
             function menuOeffnen() {
