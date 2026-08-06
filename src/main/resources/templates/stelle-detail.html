@@ -28,13 +28,20 @@
 
         </div>
 
-        <h1 th:text="${stelle.titel}"></h1>
-        <p th:text="${stelle.beschreibung}"></p>
-        <p th:text="${stelle.typ}"></p>
-        <p th:text="${stelle.standort}"></p>
-        <a th:href="@{/bewerbung(stelleId=${stelle.id})}">
-            Jetzt Bewerben
-        </a>
+        <div class="container">
+            <h1 th:text="${stelle.titel}"></h1>
+
+            <p class="job-meta">
+                <span th:text="${stelle.typ}"></span> ·
+                <span th:text="${stelle.standort}"></span>
+            </p>
+
+            <p class="job-description" th:text="${stelle.beschreibung}"></p>
+
+            <a th:href="@{/bewerbung(stelleId=${stelle.id})}" class="btn-link">
+                Jetzt Bewerben
+            </a>
+        </div>
 
         <script>
             function menuOeffnen() {
