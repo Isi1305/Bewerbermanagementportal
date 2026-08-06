@@ -27,97 +27,105 @@
 
         </div>
 
-        <h1>Catchphrase</h1>
-        <p>Längerer Spruch.</p>
+        <div class="container">
+            <h1>Catchphrase</h1>
+            <p>Längerer Spruch.</p>
 
-        <!-- DropDown-Menü -->
-        <h2>Du suchst nach etwas spezifischen?</h2>
+            <!-- DropDown-Menü -->
+            <h2>Du suchst nach etwas spezifischen?</h2>
 
-        <form th:action="@{/stellen/suche}" method="get">
+            <form th:action="@{/stellen/suche}" method="get">
 
-            <label>Arbeitsbereich:</label>
+                <label>Arbeitsbereich:</label>
 
-            <select name="arbeitsbereich">
+                <select name="arbeitsbereich">
 
-                <option value="IT">
-                    IT
-                </option>
+                    <option value="IT">
+                        IT
+                    </option>
 
-                <option value="Marketing">
-                    Marketing
-                </option>
+                    <option value="Marketing">
+                        Marketing
+                    </option>
 
-                <option value="Personal">
-                    Personal
-                </option>
+                    <option value="Personal">
+                        Personal
+                    </option>
 
-                <option value="Vertrieb">
-                    Vertrieb
-                </option>
+                    <option value="Vertrieb">
+                        Vertrieb
+                    </option>
 
-            </select>
-
-
-            <label>Karrierestatus:</label>
-
-            <select name="karrierestatus">
-
-                <option value="STUDENT">
-                    Student
-                </option>
-
-                <option value="EINSTEIGER">
-                    Einsteiger
-                </option>
-
-                <option value="EXPERTE">
-                    Experte
-                </option>
-
-            </select>
+                </select>
 
 
-            <button type="submit">
-                Suchen
-            </button>
+                <label>Karrierestatus:</label>
 
-        </form>
+                <select name="karrierestatus">
 
-        <!--offene Stellen-->
-        <h2>Unsere offene Stellen</h2>
+                    <option value="STUDENT">
+                        Student
+                    </option>
 
-        <div class="job-card" th:each="stelle : ${stellen}">
-            <h3 th:text="${stelle.titel}"></h3>
+                    <option value="EINSTEIGER">
+                        Einsteiger
+                    </option>
 
-            <p>
-                Standort:
-                <span th:text="${stelle.standort}"></span>
-            </p>
+                    <option value="EXPERTE">
+                        Experte
+                    </option>
 
-            <p>
-                Art:
-                <span th:text="${stelle.typ}"></span>
-            </p>
+                </select>
 
-            <a th:href="@{/stellen/{id}(id=${stelle.id})}">
-                Mehr erfahren
-            </a>
 
-        </div>
+                <button type="submit">
+                    Suchen
+                </button>
 
-        <!--Warum man dazugehört Teil -->
-        <h2>Warum du zu unserem Team gehörst</h2>
-        <div>
-            <h3>Flexible Arbeitszeiten</h3>
-            <p>Lorem ipsum</p>
-        </div>
-        <div>
-            <h3>Remote-freundlich</h3>
-            <p>Lorem ipsum</p>
-        </div>
-        <div>
-            <h3>Modernes Team</h3>
-            <p>Lorem ipsum</p>
+            </form>
+
+            <!--offene Stellen-->
+            <h2>Unsere offene Stellen</h2>
+
+            <div class="job-list">
+                <div class="job-card" th:each="stelle : ${stellen}">
+                    <h3 th:text="${stelle.titel}"></h3>
+
+                    <p>
+                        Standort:
+                        <span th:text="${stelle.standort}"></span>
+                    </p>
+
+                    <p>
+                        Art:
+                        <span th:text="${stelle.typ}"></span>
+                    </p>
+
+                    <a th:href="@{/stellen/{id}(id=${stelle.id})}">
+                        Mehr erfahren
+                    </a>
+
+                </div>
+            </div>
+
+            <!--Warum man dazugehört Teil -->
+            <div class="team">
+                <h2>Warum du zu unserem Team gehörst</h2>
+                <div class="features-list">
+                    <div class="feature-card">
+                        <h3>Flexible Arbeitszeiten</h3>
+                        <p>Lorem ipsum</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Remote-freundlich</h3>
+                        <p>Lorem ipsum</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Modernes Team</h3>
+                        <p>Lorem ipsum</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script>
