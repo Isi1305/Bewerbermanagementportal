@@ -194,4 +194,18 @@ form {
     text-align: center;
 }
 
+/* Login */
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;  /* horizontal */
+    align-items: center;      /* vertikal */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
 
