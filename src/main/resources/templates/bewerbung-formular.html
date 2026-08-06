@@ -33,19 +33,33 @@
                 Zum Absenden der Bewerbung benötigen Sie ein Benutzerkonto.
             </p>
 
-            <a th:href="@{/registrieren}">Registrieren</a>
-            <a th:href="@{/login}">Login</a>
+        <a th:href="@{/registrieren}" class="text-link">Registrieren</a>
+        <a th:href="@{/login}" class="text-link">Login</a>
 
             <form th:action="@{/bewerbung}" method="post" enctype="multipart/form-data"> <!-- Beim Klick auf Jetzt Bewerben werden die Daten an /bewerbung geschickt -->
-                <label>
-                    Lebenslauf:
-                    <input type="file" name="lebenslauf">
-                </label>
+                <div class="upload-row">
+                    <div class="upload-group">
+                        <p class="upload-title">Lebenslauf</p>
+                        <label for="lebenslauf-input">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 3v12m0-12l-4 4m4-4l4 4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </label>
+                        <input type="file" id="lebenslauf-input" name="lebenslauf">
+                    </div>
 
-                <label>
-                    Anschreiben:
-                    <input type="file" name="anschreiben">
-                </label>
+                    <div class="upload-group">
+                        <p class="upload-title">Anschreiben</p>
+                        <label for="anschreiben-input">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 3v12m0-12l-4 4m4-4l4 4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </label>
+                        <input type="file" id="anschreiben-input" name="anschreiben">
+                    </div>
+                </div>
 
                 <input type="text" name="vorname" placeholder="Vorname">
                 <input type="text" name="nachname" placeholder="Nachname">
