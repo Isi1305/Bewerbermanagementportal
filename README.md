@@ -1,43 +1,35 @@
-Aufgabenstellung 3: Konzeption und Umsetzung eines einfachen Bewerbermanagementportals 
+# Projektübersicht
 
-Hintergrund: Ein schlankes Bewerbermanagementsystem (ATS) umfasst eine Karriereseite mit Stellenübersicht 
-und -details, ein bewerberfreundliches Formular zur Einreichung von Unterlagen, eine transparente Bewerbungs
-Pipeline mit Statusverfolgung sowie einen einfachen Verwaltungsbereich für Stellen und Kandidatenprofile. 
-Optionale Integrationen in externe Dienste wie Kalender, E-Mail-Provider oder Jobbörsen können vorgesehen 
-werden (Diese müssen aber nicht implementiert werden!). Neben der technischen Architektur sind 
-Datenschutz und regulatorische Anforderungen wie DSGVO, Aufbewahrungs- und Löschfristen, Einwilligungen zur 
-Datenverarbeitung sowie Antidiskriminierungsvorgaben (z. B. AGG) zu berücksichtigen. 
+Im Rahmen eines Studienprojekts habe ich ein einfaches Bewerbermanagementportal konzipiert und umgesetzt.
 
-Aufgabenstellung: Entwickle ein funktionsfähiges Bewerbermanagementsystem (ATS) und arbeite die 
-folgenden Schritte in der angegebenen Reihenfolge ab: 
+Ziel des Projekts war es, praktische Erfahrungen mit der Entwicklung einer webbasierten Anwendung zu sammeln und das Zusammenspiel von Java, Spring Boot, einer Datenbank und der Darstellung von Webinhalten kennenzulernen.
 
-- Lege die Zielgruppe(n), die Rollen und die zentralen Use Cases fest, indem Du z. B. für Bewerber:innen das 
-Finden von Stellen, das Anzeigen von Stellendetails, das Ausfüllen des Bewerbungsformulars definierst.
+Das Projekt war eine meiner ersten größeren praktischen Arbeiten mit Java und bildete eine wichtige Grundlage für meine weitere Beschäftigung mit der Softwareentwicklung.
 
-- Für Recruiter:innen soll das Anlegen und Verwalten von Stellen, das Sichten und Bewerten von Bewerbungen, 
-das Verschieben entlang einer Pipeline und die Dokumentation von Notizen möglich sein.
 
-- Präzisiere den Funktionsumfang des Systems, indem Du eine Karrierestartseite, eine Stellenliste, 
-Stellendetailseiten, ein Bewerbungsformular mit Upload von Anhängen (z. B. PDF-Lebenslauf) sowie einen 
-Adminbereich für Stellen- und Kandidatenmanagement mit Statuswechseln festlegst.
- 
-- Plane auch die rechtlichen Aspekte sowie die relevanten Compliance-Anforderungen (insbesondere DSGVO, 
-Einwilligungen, Löschkonzept, Antidiskriminierung) mit einer kurzen, schlüssigen Begründung ein.
+# Technische Schwerpunkte
 
-- Erstelle UI-Skizzen oder Mockups, die die unterschiedlichen Seiten und Bereiche visualisieren.
+- Entwicklung einer webbasierten Anwendung mit Java und Spring Boot
+- Erste praktische Erfahrungen mit Backend-Entwicklung
+- Verbindung einer Anwendung mit einer relationalen Datenbank
+- Dynamische Darstellung von Daten mithilfe von Thymeleaf
+- Zusammenspiel von Backend, Datenbank und Benutzeroberfläche
+- Projektverwaltung und Abhängigkeitsmanagement mit Maven
 
-- Entwirf ein grobes Datenmodell mit Entitäten wie z. B. Nutzer:innen (Bewerber:innen, Recruiter:innen, 
-Admin), Stellen, Bewerbungen, Pipeline-Status, Anhängen/Dokumenten etc.
+# Was ich bei diesem Projekt gelernt habe
 
-- Lege die Programmiersprache und die Technologien fest, z. B. HTML, PHP oder Java, und begründe diese 
-Wahl aus fachlicher und technischer Sicht. Triff eine Entscheidung zur Datenhaltung, indem Du beispielsweise 
-SQLite als einfachen Einstieg auswählst und die Abwägungen im Hinblick auf Nutzerzahl, Betrieb, Wartung 
-und Skalierbarkeit erläuterst sowie Alternativen wie MySQL oder PostgreSQL einordnest.
+Das Projekt hat mir einen ersten umfangreicheren Einblick in die Entwicklung mit Java und Spring Boot ermöglicht.
 
-- Plane die Server- und Testumgebung, indem Du entscheidest, ob Du z. B. XAMPP Packages, eine lokale Linux
-VM über VirtualBox oder das IU Virtual Lab verwendest, beschreibe die dafür benötigten Komponenten.
+Besonders beschäftigte ich mich mit:
 
-- Skizziere die Software-Architektur, lege außerdem Kriterien für die Performance, Wartbarkeit und Sicherheit 
-fest.
+- dem Aufbau einer Spring-Boot-Anwendung
+- der Strukturierung von Java-Code
+- der Verbindung zwischen Anwendungslogik und Datenbank
+- der Verwendung von Thymeleaf für dynamische Webseiten
+- dem Zusammenspiel verschiedener Technologien innerhalb einer Webanwendung
 
-- Entwickle auf Basis Deiner Festlegungen, Skizzen und Technologien einen MVP des ATS. 
+Bei der Umsetzung habe ich KI-Tools als Unterstützung genutzt, um mich in neue Technologien einzuarbeiten, Zusammenhänge besser zu verstehen und Lösungen zu entwickeln.
+
+# Projektstatus
+
+Studienprojekt – umgesetzt im Rahmen einer Fallstudie zur Konzeption und Entwicklung eines einfachen Bewerbermanagementportals.
